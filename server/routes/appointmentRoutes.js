@@ -1,12 +1,11 @@
 import express from "express";
-
 import { createAppointmentQuery } from "../queries/appointmentQueries.js";
 import { markHourUnavailableQuery } from "../queries/availableHoursQueries.js";
 import Appointment from "../models/Appointment.js";
 
 const router = express.Router();
 
-export async function createAppointmentHandler(req, res) {
+export async function createAppointment(req, res) {
   const dbConnection = req.app.locals.dbConnection;
   const { user_id, vet_id, date_time, freeHourId } = req.body;
 
@@ -59,7 +58,6 @@ export async function createAppointmentHandler(req, res) {
   );
 }
 
-// Attach handler to the route
-router.post("/", createAppointmentHandler);
+router.post("/", createAppointment);
 
 export default router;

@@ -1,12 +1,11 @@
 import express from "express";
 import FreeHour from "../models/FreeHour.js";
-import app from "../index.js";
 import { getFreeHoursByVetIdQuery } from "../queries/availableHoursQueries.js";
 
 const router = express.Router();
 
-router.get("/:vetId", (req, res) => {
-  const dbConnection = app.locals.dbConnection;
+export async function getFreeHoursByVetId(req, res) {
+  const dbConnection = req.app.locals.dbConnection;
   const { vetId } = req.params;
 
   if (!dbConnection) {
@@ -33,6 +32,8 @@ router.get("/:vetId", (req, res) => {
 
     res.json(freeHours);
   });
-});
+}
+
+router.get("/:vetId", getFreeHoursByVetId);
 
 export default router;

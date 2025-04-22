@@ -9,8 +9,8 @@ import Review from "../models/Review.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const dbConnection = app.locals.dbConnection;
+export async function getAllVets(req, res) {
+  const dbConnection = req.app.locals.dbConnection;
 
   if (!dbConnection) {
     return res
@@ -30,11 +30,10 @@ router.get("/", (req, res) => {
 
     res.json(result);
   });
-});
+}
 
-router.get("/:vetId", (req, res) => {
-  const dbConnection = app.locals.dbConnection;
-
+export async function getVetById(req, res) {
+  const dbConnection = req.app.locals.dbConnection;
   const { vetId } = req.params;
 
   if (!dbConnection) {
@@ -86,6 +85,9 @@ router.get("/:vetId", (req, res) => {
       reviews,
     });
   });
-});
+}
+
+router.get("/", getAllVets);
+router.get("/:vetId", getVetById);
 
 export default router;

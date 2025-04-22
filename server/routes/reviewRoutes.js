@@ -1,5 +1,4 @@
 import express from "express";
-import app from "../index.js";
 import {
   addNewReviewQuery,
   getUserIdByNameQuery,
@@ -7,8 +6,8 @@ import {
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
-  const dbConnection = app.locals.dbConnection;
+export async function handleAddReview(req, res) {
+  const dbConnection = req.app.locals.dbConnection;
   const { vet_id, userFirstName, userLastName, rating, comment } = req.body;
 
   if (!dbConnection) {
@@ -43,9 +42,13 @@ router.post("/", (req, res) => {
             res.status(201).json({ message: "Review added successfully." });
           }
         );
+      } else {
+        return res.status(404).json({ error: "User not found." });
       }
     }
   );
-});
+}
+
+router.post("/", handleAddReview);
 
 export default router;
