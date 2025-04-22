@@ -1,0 +1,48 @@
+.free-hours-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.free-hour-item {
+  background-color: #f0f8ff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.free-hour-item:hover {
+  background-color: #87cefa;
+  transform: scale(1.05);
+}
+
+.free-hour-item.selected {
+  background-color: #4682b4;
+  color: white;
+}
+
+.confirm-appointment-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #32cd32;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-appointment-btn:hover {
+  background-color: #2e8b57;
+}
+
+.confirm-appointment-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}

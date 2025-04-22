@@ -1,0 +1,58 @@
+.vet-card {
+  border: 3px solid lightskyblue;
+  margin-bottom: 10px;
+  height: 150px;
+  width: 700px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vet-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.vet-list {
+  display: flex;
+  justify-content: center;
+}
+
+.name-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.name-rating h3 {
+  margin-right: 10px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.name-rating .star-rating {
+  margin-left: 5px;
+}
+
+.vet-card p {
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.vet-card p strong {
+  color: #333;
+  font-weight: 600;
+}
