@@ -27,7 +27,7 @@ function VetDetailsWithReviews() {
     axios
       .get(`/availableHours/${id}`)
       .then((response) => {
-        setAvailableHours(response.data); 
+        setAvailableHours(response.data);
       })
       .catch((err) => {
         console.error("Error fetching free hours", err);
@@ -47,7 +47,7 @@ function VetDetailsWithReviews() {
   };
 
   const handleHourSelection = (hour) => {
-    setSelectedHour(hour); 
+    setSelectedHour(hour);
   };
 
   const handleConfirmAppointment = () => {
@@ -60,7 +60,7 @@ function VetDetailsWithReviews() {
       user_id: 1,
       vet_id: vet.id,
       date_time: selectedHour.date_time,
-      freeHourId: selectedHour.id, 
+      freeHourId: selectedHour.id,
     };
 
     axios
@@ -69,7 +69,7 @@ function VetDetailsWithReviews() {
         alert("Appointment confirmed!");
 
         setAvailableHours((prevHours) =>
-          prevHours.filter((hour) => hour.id !== selectedHour.id) 
+          prevHours.filter((hour) => hour.id !== selectedHour.id)
         );
         setSelectedHour(null);
       })
@@ -95,10 +95,20 @@ function VetDetailsWithReviews() {
                 {availableHours.map((freeHour) => (
                   <div
                     key={freeHour.id}
-                    className={`free-hour-item ${selectedHour && selectedHour.id === freeHour.id ? "selected" : ""}`}
-                    onClick={() => handleHourSelection(freeHour)}
-                  >
-                    {new Date(freeHour.date_time).toLocaleString()}
+                    className={`free-hour-item ${
+                      selectedHour && selectedHour.id === freeHour.id
+                        ? "selected"
+                        : ""
+                    }`}
+                    onClick={() => handleHourSelection(freeHour)}>
+                    {new Date(freeHour.date_time).toLocaleString("en-US", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
                   </div>
                 ))}
               </div>
@@ -108,8 +118,7 @@ function VetDetailsWithReviews() {
           <button
             onClick={handleConfirmAppointment}
             className="confirm-appointment-btn"
-            disabled={!selectedHour} 
-          >
+            disabled={!selectedHour}>
             Confirm Appointment
           </button>
 

@@ -46,3 +46,10 @@
   background-color: #aaa;
   cursor: not-allowed;
 }
+
+.free-hour-item {
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 13px;
+}

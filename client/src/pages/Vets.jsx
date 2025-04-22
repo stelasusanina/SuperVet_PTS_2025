@@ -28,7 +28,7 @@ function VetsList() {
 
   return (
     <div>
-      <h2>Veterinarians List</h2>
+      <h2 className="vets-list">Veterinarians List</h2>
       <div className="vet-list">
         <div className="vet-cards-container">
           {vets.map((vet) => (
